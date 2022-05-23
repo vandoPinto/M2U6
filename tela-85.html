@@ -15,8 +15,37 @@
             </div>
         </div>
     </div>
-    <div style="margin-top: 52px;">
+    <div style="margin-top: 52px;" id="botao_1">
         <img class="animate__animated animate__backInRight" src="recursos/imgs/img-slide-85.png"
             style="position: absolute;right: 112px;width: 163px;height: 409px;top: 54px;">
     </div>
+    <div id="janela_1" style="overflow: scroll;">
+        <img src="recursos/imgs/img-slide-85.png"
+            style="left: 140px;top: 0px;width: 749px;height: 1589px;margin-top: -26px;position: absolute;">
+    </div>
 </div>
+<script>
+    $(() => {
+        let janelas = $(document).find('[id^=janela]').css('cursor', 'pointer').on("click", apagarJanelas);
+        apagarJanelas();
+        $(document).find('[id^=btn]').hide();
+        let botoes = $(document).find('[id^=botao]').map((index, botao) => {
+            $(botao).css('cursor', 'pointer');
+            $(botao).hover(() => {
+                $(document).find(`[id=btn_${index + 1}_2]`).show();
+            });
+            $(botao).mouseleave(() => {
+                $(document).find('[id^=btn]').hide();
+            });
+            $(botao).click(() => {
+                apagarJanelas();
+                $(janelas[index]).fadeIn();
+            })
+        })
+        function apagarJanelas() {
+            janelas.map((index, janela) => {
+                $(janela).hide();
+            })
+        }
+    })
+</script>
