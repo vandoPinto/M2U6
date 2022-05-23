@@ -1,31 +1,69 @@
-<div class="coluna-esquerda altura-1_1 largura-1_3 centro">
-    <img src="recursos/imgs/T5.svg" style="top: 0px;left: 0px;width: 140px;">
-</div>
-<div class="coluna-direita" style="width: 676px;margin-right: 32px;margin-top: 51px;">
-    <p>Com a Constituição Federal de 1988, instituiu-se uma organização político-administrativa que previa a
-        autonomia e, ao
-        mesmo tempo, a articulação e a cooperação das três esferas de governo (Brasil, 1988). </p>
-    <p>Essa proposta exigia um grande
-        esforço para viabilizar políticas públicas efetivas, mas ela foi fundamental para garantir as ações de saúde
-        para todo
-        cidadão brasileiro, independentemente do município ou do estado onde resida.</p>
-    <p>Logo, a incorporação do planejamento no
-        Brasil ocorre, desde o início, no arcabouço jurídico do SUS, a partir de 1990, com as propostas de
-        planejamento
-        ascendente, entre os três níveis governamentais, a elaboração de planejamento estratégico pelos respectivos
-        governos e a
-        edição de normas e orientações para sua realização (TEIXEIRA, 2010; PAIM, 2006).</p>
-    <div class="animate__animated animate__backInRight"
-        style="margin-top: 49px;margin-left: -10px;display: flex;flex-direction: row;width: 688px;height: 165px;top: 139px;right: 15px;background-color: #E7F1F8;border-radius: 10px;">
-        <img src="recursos/imgs/importante-icon.svg" style="width: 61px;margin-top: -13px;margin-left: 23px;">
-        <div style="display: initial;margin-left: 20px;margin-top: 10px;width: 553px;">
-            <p style="font-weight: bold;color: #294666;font-size: 15px;">IMPORTANTE</p>
-            <p style="font-size: 12px;">A medicalização da vida utiliza-se da racionalidade médica para abordar
-                problemas que são de ordem
-                socioeconômica-cultural, promovendo uma perda de autonomia pelas pessoas (que se tornam cada vez
-                mais dependentes de
-                saberes de especialistas) e uma culpabilização dessas pessoas por sua doença (GAUDENZI; ORTEGA,
-                2012).</p>
+<style>
+    .parent {
+        width: 898px;
+        overflow-x: hidden;
+        float: left;
+        margin-left: -14px;
+    }
+
+    .child {
+        width: 1000px;
+        height: 492px;
+        float: left;
+        cursor: pointer;
+    }
+</style>
+<div style="display: flex;">
+    <div style="width: 622px;height: 490px;right: 1px;background-color: #0D536A;padding-left: 40px;padding-top: 10px;">
+        <div>
+            <p style="position: absolute;color: white;margin-top: 26px;font-size: 12px;">
+                TÓPICO<strong>
+                    1</strong></p>
+            <p style="position: absolute;color: white;margin-left: 80px;margin-top: 20px;font-size: 11px;width: 230px;">
+                PLANEJAMENTO E PROGRAMAÇÃO EM SAÚDE NO SISTEMA ÚNICO DE SAÚDE (SUS)</p>
+        </div>
+        <div
+            style=" width:100px; height: 6px;position: absolute;top: 60px;border-bottom: 1px solid white;width: 319px;">
+        </div>
+        <p style="color: white;margin-top: 160px;width: 240px;margin-left: 20px;">Que tal conhecermos as normas que
+            direcionam o processo de planejamento no SUS por meio de uma linha do tempo? </p>
+        <p style="color: white;width: 240px;margin-left: 20px;">Arraste
+            para o lado para interagir com a imagem.
+        </p>
+        <div style="position: absolute;height: 300px;width: 3px;background-color: #324963;top: 98px;left: 377px;">
+        </div>
+    </div>
+    <div class="parent">
+        <div class="child">
+            <img src="recursos/imgs/img-slide-35.svg" style="margin-left: 1px;height: 500px;">
         </div>
     </div>
 </div>
+<script>
+    $(() => {
+        const slider = document.querySelector('.parent');
+        let mouseDown = false;
+        let startX, scrollLeft;
+
+        let startDragging = function (e) {
+            mouseDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        };
+        let stopDragging = function (event) {
+            mouseDown = false;
+        };
+
+        slider.addEventListener('mousemove', (e) => {
+            e.preventDefault();
+            if (!mouseDown) { return; }
+            const x = e.pageX - slider.offsetLeft;
+            const scroll = x - startX;
+            slider.scrollLeft = scrollLeft - scroll;
+        });
+
+        slider.addEventListener('mousedown', startDragging, false);
+        slider.addEventListener('mouseup', stopDragging, false);
+        slider.addEventListener('mouseleave', stopDragging, false);
+    })
+</script>

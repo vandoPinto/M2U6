@@ -1,32 +1,46 @@
-<div style="height: 60px;width: 100%;">
-    <img style="height: 60px;position: absolute;right: 0px;" src="recursos/imgs/H1.png">
-    <p style="position: absolute;color: white;margin-left: 42px;margin-top: 26px;font-size: 12px;">TÓPICO<strong>
-            2</strong></p>
-    <p style="position: absolute;color: white;margin-left: 112px;margin-top: 26px;font-size: 11px;">
-        ASPECTOS METODOLÓGICOS DO PLANEJAMENTO E PROGRAMAÇÃO EM SAÚDE NO ÂMBITO DA ATENÇÃO PRIMÁRIA À SAÚDE</p>
+<div class="coluna-esquerda altura-1_1 largura-1_3 centro">
+    <img src="recursos/imgs/T5.svg" style="top: 0px;left: 0px;width: 140px;">
 </div>
-<div style="margin-top: 77px;margin-left: 32px;width: 823px;">
-    <p style="color: #FFA800;font-size: 20px;font-weight: bolder;">Planejamento participativo no âmbito da APS</p>
-    <p>No momento explicativo do PES, a participação da comunidade, enquanto atores sociais interessados na situação
-        de saúde,
-        deve ser priorizada, de modo a possibilitar a expressão de diversas perspectivas sobre o problema
-        (VILASBÔAS, 2004).</p>
-    <p>Entretanto, o que ocorre normalmente na APS é a organização do trabalho mediante o saber das profissões, e
-        isso não
-        garante que as práticas de trabalho se complementem (BRASIL, 2009).</p>
-    <p>Dessa forma, entendemos que a gestão participativa é
-        um instrumento de grande valia para essa mudança, pois pode viabilizar que os diferentes atores sociais
-        explicitem suas
-        demandas, propostas e estratégias de solução, numa perspectiva de negociação dos diversos interesses em
-        jogo.</p>
-</div>
-<footer style="width: 1008px;height: 19px;display: flex;background-color: #0D536A;">
-    <div style="margin-top: -8px;display: flex;margin-left: 42px;">
-        <p style="color: white;font-size: 12px;">MÓDULO 2</p>
-        <p style="margin-left: 15px;color: white;font-size: 11px;margin-top: 12px;">CONHECIMENTOS ESTRATÉGICOS PARA
-            A GESTÃO DA ESF</p>
-        <p style="margin-left: 140px;color: white;font-size: 12px;">UNIDADE 6</p>
-        <p style="margin-left: 15px;color: white;font-size: 11px;margin-top: 12px;">PLANEJAMENTO E PROGRAMAÇÃO EM SAÚDE
-        </p>
+<div class="coluna-direita" style="margin-right: 40px;">
+    <div style="width: 683px;margin-top: 58px;">
+        <div style="display: flex;">
+            <div style="margin-top: 151px;margin-left: 30px;width: 240px;">
+                <p>Clique sobre a imagem para conhecer os atores do PES na APS.
+                </p>
+            </div>
+            <div id="botao_1">
+                <img class="animate__animated animate__backInRight" src="recursos/imgs/img-slide-72.png"
+                    style="margin-left: 120px;width: 206px;height: 436px;margin-top: -26px;">
+            </div>
+            <div id="janela_1" style="overflow: scroll;">
+                <img src="recursos/imgs/img-slide-72.png"
+                    style="left: 140px;top: 0px;width: 749px;height: 1589px;margin-top: -26px;position: absolute;">
+            </div>
+        </div>
     </div>
-</footer>
+</div>
+<script>
+    $(() => {
+        let janelas = $(document).find('[id^=janela]').css('cursor', 'pointer').on("click", apagarJanelas);
+        apagarJanelas();
+        $(document).find('[id^=btn]').hide();
+        let botoes = $(document).find('[id^=botao]').map((index, botao) => {
+            $(botao).css('cursor', 'pointer');
+            $(botao).hover(() => {
+                $(document).find(`[id=btn_${index + 1}_2]`).show();
+            });
+            $(botao).mouseleave(() => {
+                $(document).find('[id^=btn]').hide();
+            });
+            $(botao).click(() => {
+                apagarJanelas();
+                $(janelas[index]).fadeIn();
+            })
+        })
+        function apagarJanelas() {
+            janelas.map((index, janela) => {
+                $(janela).hide();
+            })
+        }
+    })
+</script>

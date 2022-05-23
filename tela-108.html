@@ -1,3 +1,18 @@
+<style>
+    .parent {
+        width: 420px;
+        overflow-x: hidden;
+        float: left;
+        margin-left: 46px;
+    }
+
+    .child {
+        width: 1000px;
+        height: 492px;
+        float: left;
+        cursor: pointer;
+    }
+</style>
 <div style="height: 60px;width: 100%;">
     <img style="height: 60px;position: absolute;right: 0px;" src="recursos/imgs/H1.png">
     <p style="position: absolute;color: white;margin-left: 42px;margin-top: 26px;font-size: 12px;">TÓPICO<strong>
@@ -5,26 +20,37 @@
     <p style="position: absolute;color: white;margin-left: 112px;margin-top: 26px;font-size: 11px;width: 450px;">
         OPERACIONALIZAÇÃO DA PROGRAMAÇÃO EM SAÚDE NA APS</p>
 </div>
-<div style="display: flex;flex-direction: row;justify-content: space-between;">
-    <div style="margin-left: 50px;margin-top: 16px;width: 352px;">
-        <p style="color: #FFA800;font-size: 20px;font-weight: bolder;">Programação local</p>
-        <p>A programação local permite ainda o desencadeamento de um processo criativo de elaboração de propostas de
-            práticas que
-            articulam a experiência de cada sujeito e de cada instituição envolvida. Considera as necessidades de
-            saúde e os
-            problemas da população como critério para o processo para a programação das ações em cada território
-            (SCHRAIBER, 1989).
-        </p>
-        <p>Usada adequadamente, a matriz de programação pode se tornar um instrumento eficiente de geração de ideias
-            novas e
-            motivação para o trabalho entre os participantes do processo de planejamento das ações de saúde, com
-            base nas
-            necessidades em saúde identificadas em cada território (UMPIERRE et al., 2017).</p>
+<div style="display: flex; margin-top: 50px; margin-left: 50px;">
+    <div class="animate__animated animate__backInLeft"
+        style="display: flex;flex-direction: row;width: 291px;height: 300px;top: 139px;right: 15px;background-color: #E7F1F8;border-radius: 10px;">
+        <div style="display: initial;width: 277px;">
+            <img src="recursos/imgs/saibaMais.svg"
+                style="width: 70px;height: 65px;margin-top: 46px;margin-left: 110px;">
+            <p style="font-weight: bold;color: #294666;font-size: 15px;text-align: center;">SAIBA MAIS</p>
+            <p style="width: 229px;font-size: 12px;margin-left: 31px;">No <a href="recursos/pdf/MANUAL_DE_GERENCIAMENTO_LOCAL_DA_APS.pdf" target="_blank" style="color: #1592E6;">
+                Manual de Gerenciamento Local da APS do
+                    DF
+            </a>, constam algumas estratégias para
+                organização do processo de trabalho,
+                inclusive com uso de tecnologias para registro, operacionalização e monitoramento das ações
+                planejadas.
+            </p>
+        </div>
     </div>
-    <div class="coluna-direita animate__animated animate__backInRight">
-        <img style="margin-top: 61px;margin-right: 40px;width: 400px;height: 267px;"
-            src="recursos/imgs/img-slide-96.svg">
-        <p style="font-size: 10px;color: #707070;margin-right: 0px;">Foto: Sandro Araújo/Agência Saúde DF</p>
+    <div>
+        <p style="width: 404px;margin-left: 50px;margin-top: 0px;">Arraste as imagens para o lado e conheça as
+            estratégias de gestão da programação local em saúde na APS.</p>
+        <div class="parent">
+            <div class="child">
+                <div style="display: flex;">
+                    <img src="recursos/imgs/img-slide-113/1.png" style="width: 420px;height: 236px;">
+                    <img src="recursos/imgs/img-slide-113/2.png" style="width: 420px;height: 236px;">
+                    <img src="recursos/imgs/img-slide-113/3.png" style="width: 420px;height: 236px;">
+                    <img src="recursos/imgs/img-slide-113/4.png" style="width: 420px;height: 236px;">
+                    <img src="recursos/imgs/img-slide-113/5.png" style="width: 420px;height: 236px;">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <footer style="width: 1008px;height: 19px;display: flex;background-color: #0D536A;">
@@ -37,3 +63,31 @@
         </p>
     </div>
 </footer>
+<script>
+    $(() => {
+        const slider = document.querySelector('.parent');
+        let mouseDown = false;
+        let startX, scrollLeft;
+
+        let startDragging = function (e) {
+            mouseDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        };
+        let stopDragging = function (event) {
+            mouseDown = false;
+        };
+
+        slider.addEventListener('mousemove', (e) => {
+            e.preventDefault();
+            if (!mouseDown) { return; }
+            const x = e.pageX - slider.offsetLeft;
+            const scroll = x - startX;
+            slider.scrollLeft = scrollLeft - scroll;
+        });
+
+        slider.addEventListener('mousedown', startDragging, false);
+        slider.addEventListener('mouseup', stopDragging, false);
+        slider.addEventListener('mouseleave', stopDragging, false);
+    })
+</script>
